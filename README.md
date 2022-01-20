@@ -104,12 +104,12 @@ Add additional notes about how to deploy this on a live system.
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@Ouail Bni / Mr-Wii](https://github.com/Mr-Wii) - Thesis worker
-- [@Artur Matusiak](hhttps://github.com/matusart) - Thesis worker
+- [Ouail Bni / Mr-Wii](https://github.com/Mr-Wii) - Thesis worker
+- [Artur Matusiak](https://github.com/matusart) - Thesis worker
 
 See also the list of [contributors](https://github.com/Mr-Wii/Js-Ts/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Jesper Linné - Thesis supervisor
-- Alper Kilic - Thesis supervisor
+- [Jesper Liné](https://github.com/jesperl1) - Thesis supervisor
+- [Alper Kilic](https://github.com/AlperKilic8467) - Thesis supervisor
