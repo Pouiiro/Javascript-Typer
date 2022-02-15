@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import AppProvider from 'Provider'
+import MyRoutes from 'Routes'
+
+import { ThemeProvider } from 'styled-components'
+import { lightTheme, darkTheme } from 'Styles/Theme/theme'
+import { useDarkMode } from 'Styles/Theme/useDarkMode'
+import { GlobalStyles } from 'Global/globalStyles'
+
+import Toggle from 'Styles/Theme/toggler'
 
 function App() {
+  let [theme, themeToggler] = useDarkMode()
+  const themeMode = theme === 'light' ? lightTheme : darkTheme
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={themeMode}>
+      <div className='App'>
+        <GlobalStyles />
+        <AppProvider>
+          <Toggle theme={theme} toggleTheme={themeToggler} />
+          <MyRoutes />
+        </AppProvider>
+      </div>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
