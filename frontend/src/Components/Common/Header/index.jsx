@@ -4,11 +4,11 @@ import MyNav from './style'
 
 const Navigation = () => {
   return (
-    <MyNav>
+    <MyNav id='mynav'>
       <NavLink end to='/'>
-        Home
+        Quotify
       </NavLink>
-      <NavLink to='/test'>Test</NavLink>
+      <NavLink to='/test'>Favorites</NavLink>
     </MyNav>
   )
 }
