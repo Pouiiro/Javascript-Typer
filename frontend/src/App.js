@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -17,6 +18,8 @@ function App() {
         >
           Learn React
         </a>
+        <label>Favourite Quote</label>
+        <input type = "text" size = "20" ></input>
       </header>
     </div>
   );
