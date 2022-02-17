@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.quotes-input {
+  height: 100px;
+  width:  300px;
+  font-size: 20px;
+}
