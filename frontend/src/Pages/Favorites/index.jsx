@@ -4,6 +4,7 @@ import Div from 'Styles/Favorites'
 
 const TestPage = () => {
   const { favs } = useContext(AppContext)
+
   const myFavorites = favs.map((quotes, index) => {
     return (
       <div key={index}>
@@ -11,6 +12,7 @@ const TestPage = () => {
       </div>
     )
   })
+
   return (
     <Div>
       <h1>Favorites</h1>
@@ -18,4 +20,5 @@ const TestPage = () => {
     </Div>
   )
 }
+
 export default TestPage
