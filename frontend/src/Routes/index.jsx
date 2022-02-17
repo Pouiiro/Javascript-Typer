@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from 'Pages/Home/index'
-import TestPage from 'Pages/TestPage/index'
+import TestPage from 'Pages/Favorites/index'
 import Navigation from 'Components/Common/Header/index'
 
 export default () => {
