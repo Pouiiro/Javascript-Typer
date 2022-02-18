@@ -1,0 +1,98 @@
+// {
+//   "env": {
+//     "browser": true,
+//     "es2021": true
+//   },
+//   "extends": ["eslint:recommended", "plugin:react/recommended"],
+//   "parserOptions": {
+//     "ecmaFeatures": {
+//       "jsx": true
+//     },
+//     "ecmaVersion": 12,
+//     "sourceType": "module"
+//   },
+//   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+//   "rules": {
+//     "no-unused-vars": "off",
+//     "react/display-name": "off",
+//     "prettier/prettier": [
+//       "error",
+//       {
+//         "printWidth": 80,
+//         "trailingComma": "es5",
+//         "semi": false,
+//         "jsxSingleQuote": true,
+//         "singleQuote": true,
+//         "useTabs": false,
+//         "endOfLine": "auto"
+//       }
+//     ]
+//   }
+// }
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+
+  "rules": {
+    "no-console": "off",
+    "no-restricted-syntax": "warn",
+    "prettier/prettier": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-unused-expressions": "off",
+    "no-use-before-define": "off",
+    "camelcase": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-curly-newline": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "import/no-duplicates": "off",
+    "react/require-default-props": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "no-useless-return": "off",
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}
