@@ -13,7 +13,7 @@ code {
 }
 
 .myDiv {
-  color: orange;
+  color: black;
   background-image: url("./QuotesFrame.png");
   height: 500px; /* You must set a specified height */
   width: 80vw;

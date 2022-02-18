@@ -1,32 +1,50 @@
 import react, { useState } from "react";
 import photoFrame from "../QuotesFrame.png";
+import SaveBtn from "./savedQuotes";
+
 const Frame = <img src={photoFrame}></img>;
+
 const InputQuotes = () => {
   // defining the state for each element
   let [show, showQuote] = useState(false);
   let [changed, setChange] = useState(0);
-
+  let [arrayAPI, setQuote] = useState([]);
+  let numberQ = 4;
   // setting up our quotes array
-  let quotesArray = ["Artur", "Ouail", "Hussan", "test"];
+  let quotesArray = ["Artur is great", "Ouail", "Hussan", "test"];
 
+  const quoteAPI = () => {
+    fetch(`https://goquotes-api.herokuapp.com/api/v1/random?count=${numberQ}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const results = data.quotes.map(
+          (imercileQuotes, index) => imercileQuotes.text
+        );
+        // setQuote(arrayAPI.concat(results)); for adding new ones to it
+        setQuote(results);
+      });
+  };
   // displaying or hiding the quotes using the state we created that targets the quotes
   const DisplayQuotes = () => showQuote(!show);
 
   // change the quotes and we update our DOM by using the state we created for it (changed state)
   const changeQuote = () => setChange(1);
 
-  const myQuotes = quotesArray.map((quote, index) => (
-    <div key={index}>
-      {show ? (
-        <div className="myDiv">
-          <p id="quotes-place">{quote}</p>{" "}
-          <button onClick={() => console.log(quote)}>Awesome Button</button>
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
-  ));
+  const myQuotes = arrayAPI.map((quote, index) => {
+    console.log(quote);
+    return (
+      <div key={index}>
+        {show ? (
+          <div className="myDiv">
+            <p id="quotes-place">{quote}</p>
+            {/* <button onClick={() => console.log(quote)}>Awesome Button</button> */}
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+    );
+  });
 
   return (
     <div className="App">
@@ -38,6 +56,8 @@ const InputQuotes = () => {
           {show ? "Hide quotes" : "Display Quotes"}
         </button>
 
+        <button onClick={() => quoteAPI()}> Get Quotes from API</button>
+        <SaveBtn />
         {/* we are checking if the show state is true in order to show our change button */}
         {/* {show ? (
           <button id="quote-btn" onClick={changeQuote}>

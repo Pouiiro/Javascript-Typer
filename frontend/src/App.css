@@ -39,6 +39,10 @@
 
 .quotes-input {
   height: 100px;
-  width:  300px;
+  width: 300px;
   font-size: 20px;
+}
+
+.save-btn {
+  height: 100;
 }
