@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react'
 import AppProvider from 'Provider'
 import MyRoutes from 'Routes'
@@ -23,6 +24,16 @@ function App() {
         </AppProvider>
       </div>
     </ThemeProvider>
+=======
+import react from "react"
+import "./App.css"
+import MyRoutes from "Components/routes/"
+const App = () => {
+  return (
+    <>
+      <MyRoutes />
+    </>
+>>>>>>> Stashed changes
   )
 }
 
