@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const SaveBtn = () => {
+const SaveBtn = (props) => {
   return (
-    <MyBtn to='/FavouritesQuotes' id='save-btn' name='Artur'>
-      Favourites Quotes
+    <MyBtn to='/FavouritesQuotes' id='save-btn'>
+      {props.btnName}
     </MyBtn>
   )
 }
