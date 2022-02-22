@@ -1,11 +1,9 @@
 import react, { useState } from "react"
 import photoFrame from "../QuotesFrame.png"
 import SaveBtn from "./savedQuotes"
-import { Link } from "react-router-dom"
-import styled from "styled-components"
 
 const Frame = <img src={photoFrame}></img>
-
+let quotesDisplay = ""
 const InputQuotes = () => {
   // defining the state for each element
   let [show, showQuote] = useState(false)
@@ -55,16 +53,20 @@ const InputQuotes = () => {
         <br />
         <SaveBtn
           id='quote-btn'
-          onClick={DisplayQuotes}
-          btnName='Display Quotes'>
+          click={DisplayQuotes}
+          btnName={quotesDisplay}
+          link={"/"}>
           {/* Using IF else logic to check of the state is showing or no and input the text depending on it  */}
-          {show ? "Hide quotes" : "Display Quotes"}
+          {show
+            ? (quotesDisplay = "Hide quotes")
+            : (quotesDisplay = "Display Quotes")}
         </SaveBtn>
 
         <SaveBtn
-          onClick={() => quoteAPI()}
-          btnName='Get Quotes from API'></SaveBtn>
-        <SaveBtn btnName='Favourite Quotes' />
+          click={() => quoteAPI()}
+          btnName='Get Quotes from API'
+          link={"/"}></SaveBtn>
+        <SaveBtn btnName='Favourite Quotes' link={"/FavouritesQuotes"} />
         {/* we are checking if the show state is true in order to show our change button */}
         {/* {show ? (
           <button id="quote-btn" onClick={changeQuote}>
