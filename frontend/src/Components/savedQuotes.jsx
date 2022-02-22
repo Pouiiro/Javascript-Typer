@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from "react-router-dom"
+import styled from "styled-components"
 
-const SaveBtn = () => {
+const SaveBtn = ({ btnName, link, click }) => {
   return (
-    <MyBtn to="/FavouritesQuotes" id="save-btn">
-      Favorite quotes
+    <MyBtn to={link} id='save-btn' onClick={click}>
+      {btnName}
     </MyBtn>
-  );
-};
+  )
+}
 
-export default SaveBtn;
+export default SaveBtn
 
 const MyBtn = styled(Link)`
   color: white;
-`;
+`
