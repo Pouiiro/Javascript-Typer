@@ -1,8 +1,8 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 
 export const AppContext = createContext({})
 
-const ProviderV = ({ children }: any) => {
+const ProviderV: React.FC<{ children: unknown }> = ({ children }) => {
   const providerValue = {}
   return (
     <AppContext.Provider value={providerValue}>{children}</AppContext.Provider>

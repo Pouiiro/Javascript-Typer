@@ -1,14 +1,13 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 import MyNav from './style'
 
 const Navigation = () => {
   return (
-    <MyNav>
+    <MyNav id='mynav'>
       <NavLink end to='/'>
-        Home
+        Quotify
       </NavLink>
-      <NavLink to='/test'>Test</NavLink>
+      <NavLink to='/test'>Favorites</NavLink>
     </MyNav>
   )
 }
