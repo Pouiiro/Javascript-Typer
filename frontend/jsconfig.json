@@ -1,8 +1,8 @@
 {
-    "compilerOptions": {
-      "baseUrl": "src",
-      "target": "ES6",
-      "jsx": "react"
-    },
-    "include": ["src/**/*"]
-  }
+  "compilerOptions": {
+    "baseUrl": "src",
+    "target": "ES6",
+    "jsx": "react"
+  },
+  "include": ["src/**/*"]
+}
