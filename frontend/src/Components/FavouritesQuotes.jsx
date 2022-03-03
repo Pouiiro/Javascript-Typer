@@ -1,12 +1,15 @@
 import react from "react"
-import { Link } from "react-router-dom"
+import MyBtn from "./savedQuotes"
 
 const FavouriteQuotes = () => {
   return (
-    <>
-      <h1> New Page</h1>
-      <Link to='/'>Menu</Link>
-    </>
+    <div className='App'>
+      <header className='App-header'>
+        <MyBtn link='/' btnName='Menu' click></MyBtn>
+
+        <h1> New Page</h1>
+      </header>
+    </div>
   )
 }
 
