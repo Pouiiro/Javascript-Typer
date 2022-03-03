@@ -1,17 +1,15 @@
 import react, { useState } from "react"
-import photoFrame from "../QuotesFrame.png"
 import SaveBtn from "./savedQuotes"
 
-const Frame = <img src={photoFrame}></img>
 let quotesDisplay = ""
 const InputQuotes = () => {
   // defining the state for each element
   let [show, showQuote] = useState(false)
-  let [changed, setChange] = useState(0)
+  // let [changed, setChange] = useState(0)
   let [arrayAPI, setQuote] = useState([])
   let numberQ = 4
-  // setting up our quotes array
-  let quotesArray = ["Artur is great", "Ouail", "Hussan", "test"]
+
+  const DisplayQuotes = () => showQuote(!show)
 
   const quoteAPI = () => {
     fetch(`https://goquotes-api.herokuapp.com/api/v1/random?count=${numberQ}`)
@@ -25,10 +23,8 @@ const InputQuotes = () => {
       })
   }
   // displaying or hiding the quotes using the state we created that targets the quotes
-  const DisplayQuotes = () => showQuote(!show)
 
   // change the quotes and we update our DOM by using the state we created for it (changed state)
-  const changeQuote = () => setChange(1)
 
   const myQuotes = arrayAPI.map((quote, index) => {
     console.log(quote)
@@ -77,6 +73,10 @@ const InputQuotes = () => {
         )} */}
 
         {myQuotes}
+
+        <SaveBtn link={"/"} btnName='API checking'>
+          {" "}
+        </SaveBtn>
       </header>
     </div>
   )
