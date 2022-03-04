@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import Toggly from './toggleTheme'
 import { ReactComponent as Moon } from '../../Assets/svg/moon.svg'

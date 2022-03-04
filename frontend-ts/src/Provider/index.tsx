@@ -1,8 +1,10 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 
-type ContextProps = {
+interface ContextProps {
   myQuotes: Array<{ quote: string; id: string }>
+  favs: Array<{ quote: string; id: string }>
+  pushQuote: (e: { quote: string; id: string }) => void
 }
 
 export const AppContext = createContext<ContextProps | null>(null)
@@ -14,9 +16,14 @@ const ProviderV: React.FC = ({ children }) => {
     { quote: 'Dummy Quote 3', id: nanoid() },
     { quote: 'Dummy Quote 4', id: nanoid() },
   ]
-  // const [favs, addFavs] = useState([])
+  const [favs, addFavs] = useState<Array<{ quote: string; id: string }>>([])
+  const pushQuote = (e: { quote: string; id: string }) => {
+    addFavs([...favs, e])
+    // addFavs(favs.concat(e))
 
-  const providerValue = { myQuotes }
+    return ''
+  }
+  const providerValue: ContextProps = { myQuotes, favs, pushQuote }
   return (
     <AppContext.Provider value={providerValue}>{children}</AppContext.Provider>
   )

@@ -12,7 +12,7 @@ const ProviderV = ({ children }) => {
   const getQuotes = () => {
     setLoading(true)
     setQod(false)
-    fetch('https://goquotes-api.herokuapp.com/api/v1/random?count=4')
+    fetch('https://goquotes-api.herokuapp.com/api/v1/random?count=1')
       .then((response) => response.json())
       .then((data) => {
         const newQuotes = data.quotes.map((quo, index) => quo.text)
