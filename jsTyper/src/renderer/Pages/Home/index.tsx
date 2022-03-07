@@ -1,14 +1,17 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
-import * as pkg from ('typechecker')
+import { nanoid } from 'nanoid';
+import { element } from 'prop-types';
 
 const Home = () => {
+  const [write, setWrite] = useState(false);
+  const [filled, setFilled] = useState(false);
+  const [newCode, setNewCode] = useState<Array<{ code: string; id: string }>>(
+    []
+  );
   const [typeV, setType] = useState<Array<{ string: string; number: number }>>([
     { string: 'None', number: 0 },
   ]);
-  const [write, setWrite] = useState(false);
-  const [write1, setWrite1] = useState(false)
-  const [newCode, setNewCode] = useState('')
 
   const btnRef = useRef<HTMLInputElement | null>(null);
   const areaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -28,84 +31,100 @@ const Home = () => {
     setWrite(true);
   };
 
-  // let myValue = 'kizi';
-  // console.log(myValue);
-
   const codeCheck = () => {
-    let newScript = document.createElement('script');
+    let extracted: Array<string> = [];
+
+    const newScript = document.createElement('script');
     newScript.type = 'text/javascript';
     newScript.innerHTML = areaRef.current?.value;
     document.getElementById('myDiv').appendChild(newScript);
-    const testerArray = newScript.innerHTML.split("\n")
-    console.log(testerArray);
-    
+    const testerArray = newScript.innerHTML.split('\n');
 
-    const extracted = testerArray[1].replace(/['"]+/g, '').split(" ")
-    console.log(testerArray[2].replace(/['"]+/g, '').split(" "));
-    
-    if (Number(extracted[3])) {
-      setNewCode(`${extracted[0]}${' '}${extracted[1]}: number${' '}=${' '}${extracted[3]}`)
-      setWrite1(true) ;
-    } else {
-      setNewCode(`${extracted[0]}${' '}${extracted[1]}: string${' '}=${' '}${extracted[3]}`)
-      setWrite1(true) ;
-    }
-    
-
-
-    // const getVariable = () => {
-    //   const data: any = newScript.innerHTML
-    //   data.includes
-    // }
+    testerArray.forEach((e, i) => {
+      extracted.push(testerArray[i].replace(/['"]+/g, '').split(' '));
+    });
+    extracted.forEach((element) => {
+      if (Number(element[3])) {
+        newCode.push({
+          code: `${element[0]}${' '}${element[1]}: number${' '}=${' '}${
+            element[3]
+          };`,
+          id: nanoid(),
+        });
+      } else {
+        newCode.push({
+          code: `${element[0]}${' '}${element[1]}: string${' '}=${' '}${
+            element[3]
+          };`,
+          id: nanoid(),
+        });
+      }
+      setFilled(true);
+      return '';
+    });
   };
+
   return (
-    <div id='myDiv'>
+    <BigDiv id='myDiv'>
       <h1>Js Typer</h1>
       <input
         type='text'
         name='code'
         id='code'
-        placeholder='code'
+        placeholder='Write Something'
         ref={btnRef}
       />
       <button onClick={splitCode}>Get type</button>
       <br />
-      {write
-        ? typeV.map((data: any) => (
-            <>
-              <p>Strings:{data.string}</p>
-              <p>Ints:{data.number}</p>
-            </>
-          ))
-        : 'Nothing'}
-      <TextAreaS
-        ref={areaRef}
-        // onChange={}
-        placeholder='Put a code here'
-        id='textarea'
-      />
+      <Divu>
+        {write
+          ? typeV.map((data: any) => (
+              <>
+                <p>Strings:{data.string}</p>
+                <p>Ints:{data.number}</p>
+              </>
+            ))
+          : '. . .'}
+      </Divu>
+      <TextAreaS ref={areaRef} placeholder='Put Js code here' id='textarea' />
       <button onClick={codeCheck}>Run</button>
-      <DivArea
-        ref={areaRef1}
-        // onChange={}
-        id='textarea1'
-      >
-         {write1
-        ? <p>{newCode}</p>
-        : 'Nothing'}
-        </DivArea>
-    </div>
+      <DivArea ref={areaRef1} id='textarea1'>
+        {filled
+          ? newCode.map((element) => (
+              <div key={element.id}>
+                <p>{element.code}</p>
+              </div>
+            ))
+          : '. . .'}
+      </DivArea>
+    </BigDiv>
   );
 };
+
 export default Home;
 
 const TextAreaS = styled.textarea`
   width: 90%;
   height: 200px;
+  padding: 2%;
 `;
 const DivArea = styled.div`
-width: 90%;
-height: 200px;
-background-color:white;
-color:black;
-`
+  width: 90%;
+  height: 200px;
+  border: 1px solid;
+  padding: 2%;
+`;
+const Divu = styled.div`
+  padding: 5%;
+  width: 84%;
+  border: 1px solid;
+  margin-top: 2%;
+  margin-bottom: 2%;
+`;
+const BigDiv = styled.div`
+  button {
+    margin: 2%;
+    width: 20%;
+    padding: 0.17%;
+  }
+`;
