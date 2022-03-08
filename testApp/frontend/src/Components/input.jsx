@@ -9,11 +9,14 @@ const InputC = () => {
     <div>
       <button onClick={functiondummy}>log me</button>
       <p>
-        {quotes.map((e, index) => (
-          <div key={index}>
-            <p>{e}</p>
-          </div>
-        ))}
+        {
+          (quotes.map((e, index) => (
+            <div key={index}>
+              <p>{e}</p>
+            </div>
+          )),
+          [])
+        }
       </p>
     </div>
   )
