@@ -1,8 +1,15 @@
 import { createContext, useEffect, useState } from "react"
 
-export const AppContext = createContext()
+ let defaultValue: any
+export const AppContext = createContext(defaultValue)
 
-const ProviderV = ({ children }) => {
+interface forchildren{
+
+    children: any
+
+}
+
+const ProviderV = ({ children }: forchildren) => {
   const ArrayWithQuotes = ["wael"]
   const functiondummy = () => console.log("test")
   const [quotes, setQuotes] = useState(["quotes1", "quote2"])
@@ -12,7 +19,7 @@ const ProviderV = ({ children }) => {
       .then((response) => response.json())
       .then((data) => {
         const results = data.quotes.map(
-          (imercileQuotes, index) => imercileQuotes.text
+          (imercileQuotes: any , index: number) => imercileQuotes.text
         )
         setQuotes(results)
       })

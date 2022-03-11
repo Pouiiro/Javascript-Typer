@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { useContext } from "react"
-import { AppContext } from "Provider/AppContext"
 
-const SaveBtn = ({ btnName, link, click }) => {
+interface SaveBtn {
+    btnName: string
+    link: string
+    click: React.MouseEventHandler 
+}
+
+const SaveBtn = ( {btnName, link, click}: SaveBtn ) => {
   return (
     <MyBtn to={link} id='save-btn' onClick={click}>
       {btnName}
