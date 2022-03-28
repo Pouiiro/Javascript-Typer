@@ -13,13 +13,13 @@ const ProviderV = ({ children }: forchildren) => {
   const ArrayWithQuotes = ["wael"]
   const functiondummy = () => console.log("test")
   const [quotes, setQuotes] = useState(["quotes1", "quote2"])
-  const [favQ, setfavQ] = useState([])
+  const [favQ, setfavQ] = useState<Array<string>>([])
   const quoteAPI = () => {
     fetch(`https://goquotes-api.herokuapp.com/api/v1/random?count=${4}`)
       .then((response) => response.json())
       .then((data) => {
         const results = data.quotes.map(
-          (imercileQuotes: any , index: number) => imercileQuotes.text
+          (imercileQuotes: {text:string} , index: number) => imercileQuotes.text
         )
         setQuotes(results)
       })
