@@ -74,3 +74,11 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+# subfolder git
+*/*/*/.git
+*/*/.git
+**/git
+**/**/git
+**/.git
+**/**/.git
