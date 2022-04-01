@@ -12,10 +12,11 @@ const UploadComponent = () => {
   const getAST = async () => {
     try {
       const result = await axios.get(
-        `http://127.0.0.1:3000/parse?code=${contextData?.state.jsCode}`
+        `http://[::1]:3000/parse?code=${contextData?.state.jsCode}`
       );
       let data = result.data;
       contextData?.setState({ tsCode: data, fileDone: false });
+      console.log(contextData?.state.tsCode)
     } catch (err) {
       console.log;
     }
