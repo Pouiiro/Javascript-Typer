@@ -15,8 +15,9 @@ const UploadComponent = () => {
         `http://[::1]:3000/parse?code=${contextData?.state.jsCode}`
       );
       let data = result.data;
+      console.log(data);
+
       contextData?.setState({ tsCode: data, fileDone: false });
-      console.log(contextData?.state.tsCode)
     } catch (err) {
       console.log;
     }
