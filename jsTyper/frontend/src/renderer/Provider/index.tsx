@@ -12,6 +12,7 @@ interface MyState {
   conversionDone: boolean;
   jsCode: any;
   astCode: any;
+  process: boolean;
 }
 
 export const AppContext = createContext<ContextProps | null>(null);
@@ -29,6 +30,7 @@ const ProviderV: React.FC = ({ children }) => {
     conversionDone: false,
     jsCode: null,
     astCode: null,
+    process: false,
   });
 
   // useState({

@@ -10,12 +10,11 @@ const UploadComponent = () => {
   let reader = new FileReader();
 
   const getAST = async () => {
+    const uri = encodeURI(contextData?.state.jsCode);
     try {
-      const result = await axios.get(
-        `http://127.0.0.1:3000/parse?code=${contextData?.state.jsCode}`
-      );
+      const result = await axios.get(`http://[::1]:3000/parse?code=${uri}`);
       let data = result.data;
-      contextData?.setState({ tsCode: data, fileDone: false });
+      contextData?.setState({ tsCode: data, fileDone: false, process: true });
     } catch (err) {
       console.log;
     }

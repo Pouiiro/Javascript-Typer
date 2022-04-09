@@ -10,6 +10,11 @@ const routes = [
         method: 'GET',
         url: '/parse',
         handler: jstyperapi.parser
+    },
+    {
+      method: 'GET',
+      url: '/generate',
+      handler: jstyperapi.generate
     }
   ]
   
